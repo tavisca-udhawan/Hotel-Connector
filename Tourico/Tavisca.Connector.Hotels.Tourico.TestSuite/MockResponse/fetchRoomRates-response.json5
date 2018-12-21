@@ -1,0 +1,356 @@
+{
+  "sessionId": "b4f0bc29-3ad0-468c-b2f0-c5e3962b4d46",
+  "hotelInfo": {
+    "id": "200305",
+    "name": "Arizona Charlie's Decatur - Casino Hotel & Suites"
+  },
+  "roomOptions": [
+    {
+      "refId": "d6efdaf7-1c97-4120-841b-1311609af3cc",
+      "code": "266258",
+      "roomTypeCode": "375072",
+      "name": "Standard Meadow Tower",
+      "desc": "<strong>1 king bed or 2 queen beds</strong><br /> 365-sq-foot (34-sq-meter) room with city views<br /><br /><b>Entertainment</b> - WiFi, satellite channels, and pay movies <br /><b>Food & Drink</b> - Refrigerator (on request)<br /><b>Sleep</b> - Blackout drapes/curtains <br /><b>Bathroom</b> - Private bathroom, shower/tub combination, free toiletries, and a hair dryer<br /><b>Practical</b> - Iron/ironing board, desk, and phone; rollaway/extra beds and free cribs/infant beds available on request<br /><b>Comfort</b> - Air conditioning, climate control, and daily housekeeping<br />",
+      "availableRooms": 14,
+      "bedDetails": [
+        {
+          "type": "1 king",
+          "desc": "1 cama de matrimonio grande",
+          "count": 1
+        },
+        {
+          "type": "2 queen",
+          "desc": "2 camas de matrimonio",
+          "count": 2
+        }
+      ],
+      "maxOcccupancy": 3,
+      "smokingPreference": "nonSmoking"
+    }
+  ],
+  "occupancies": [
+    {
+      "refId": "8a496fb5-062c-433c-ac71-b39573d51e3a",
+      "adults": 1,
+      "children": 2
+    }
+  ],
+  "roomRate": {
+    "perBookingRates": [
+      {
+        "id": "05288358-b8dc-42b2-8396-da6e62936f31",
+        "rateOccupancies": [
+          {
+            "refId": "c025fae3-7ef4-4e85-9b0e-7327cd1235e7",
+            "roomRefId": "574c3058-e1b7-48e8-a1e8-9e9c118e9286",
+            "occupancyRefId": "67b03da7-4706-45ff-95ad-eb40ac555789"
+          }
+        ],
+        "code": "201555598",
+        "desc": "Standard Room, 1 King Bed",
+        "type": "negotiated",
+        "inventoryType": "prepaid",
+        "currency": "USD",
+        "total": 1144.25,
+        "breakup": {
+          "baseRate": 995.0,
+          "taxesAndFees": [
+            {
+              "amount": 149.25,
+              "code": null,
+              "desc": "TaxAndServiceFee",
+              "isIncludedInBase": true
+            }
+          ],
+          "discount": {
+            "amount": 0,
+            "desc": "no discount",
+            "isIncludedInBase": false
+          }
+        },
+        "dailyRoomRates": {
+          "taxIncluded": false,
+          "breakup": [
+            {
+              "date": "2016-09-18",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-19",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-20",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-21",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-22",
+              "amount": 137.81,
+              "discount": null
+            }
+          ]
+        },
+        "refundable": true,
+        "onRequest": false,
+        "boardBasis": {
+          "code": "0",
+          "desc": "Full Breakfast",
+          "type": "bedAndBreakfast",
+          "amount": 0,
+          "amountIncludedInRate": true
+        },
+        "inclusions": [
+          "Free High-Speed Internet"
+        ],
+        "additionalCharges": [
+          "Resort fee of 100 USD will be collected at the time of checkin"
+        ],
+        "policies": [
+          {
+            "type": "Disclaimer",
+            "text": "By proceeding with this reservation, you agree to all terms and conditions, which include the Cancellation Policy and all terms and conditions contained in the User Agreement.  You agree to pay the cost of your reservation. If you do not pay this debt and it is collected through the use of a collection agency, an attorney, or through other legal proceedings, you agree to pay all reasonable costs or fees, including attorney fees and court costs, incurred in connection with such collection effort."
+          },
+          {
+            "type": "Charging",
+            "text": "Total amount will be charged by the ean after the booking."
+          }
+        ],
+        "offer": {
+          "title": "Save 15%",
+          "desc": "Save 15%",
+          "discountAmount": 50.0,
+          "discountPercentage": {
+            "value": 5.0,
+            "appliedOn": "baseRate/totalRate"
+          },
+          "payStay": {
+            "stayNights": 3,
+            "freeNights": 2
+          }
+        },
+        "perRoomBreakups": [
+          {
+            "rateOccupancyRefId": "c025fae3-7ef4-4e85-9b0e-7327cd1235e7",
+            "dailyRoomRates": {
+              "taxIncluded": false,
+              "breakup": [
+                {
+                  "date": "2016-09-18T00:00:00",
+                  "amount": 199.0,
+                  "discount": 0.0
+                },
+                {
+                  "date": "2016-09-19T00:00:00",
+                  "amount": 199.0,
+                  "discount": 0.0
+                },
+                {
+                  "date": "2016-09-20T00:00:00",
+                  "amount": 199.0,
+                  "discount": 0.0
+                },
+                {
+                  "date": "2016-09-21T00:00:00",
+                  "amount": 199.0,
+                  "discount": 0.0
+                },
+                {
+                  "date": "2016-09-22T00:00:00",
+                  "amount": 199.0,
+                  "discount": 0.0
+                }
+              ]
+            }
+          }
+        ],
+        "bookingRequirement": {
+          "guaranteeRequired": false,
+          "depositRequired": false
+        },
+        "cancellationPolicy": {
+          "penalties": [
+            {
+              "window": {
+                "start": "2016-06-03T14:18:21.484428+05:30",
+                "end": "2016-09-17T23:59:00"
+              },
+              "supplierValue": 0.0,
+              "supplierValueType": "amount",
+              "calculatedAmount": 0.0
+            },
+            {
+              "window": {
+                "start": "2016-09-18T00:00:00",
+                "end": "2016-09-18T23:59:00"
+              },
+              "supplierValue": 1.0,
+              "supplierValueType": "nights",
+              "calculatedAmount": 228.85
+            }
+          ],
+          "text": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Courtyard by Marriott West Orange) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT-05:00) Eastern Time (US &amp; Canada)) on Sep 17, 2016, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  "
+        },
+        "rackRate": 1144.25,
+        "commission": {
+          "amount": 0,
+          "desc": "No commission on this rate"
+        },
+        "packageSaving": 0
+      }
+    ],
+    "perRoomRates": [
+      {
+        "id": "3668b248-bb95-447f-aad0-0e70538c63ca",
+        "groupId": "1",
+        "rateOccupancy": {
+          "refId": "d9e389ca-737f-4c0d-a100-eee34125c680",
+          "roomRefId": "c916ac3f-0041-469d-a969-3fce0991346a",
+          "occupancyRefId": "c7ccb979-da64-408e-a8ea-34c5c017b9bc"
+        },
+        "code": "201555598",
+        "desc": "Standard Room, 1 King Bed",
+        "type": "negotiated",
+        "inventoryType": "prepaid",
+        "currency": "USD",
+        "total": 1144.25,
+        "breakup": {
+          "baseRate": 995.0,
+          "taxesAndFees": [
+            {
+              "amount": 149.25,
+              "code": null,
+              "desc": "TaxAndServiceFee",
+              "isIncludedInBase": true
+            }
+          ],
+          "discount": {
+            "amount": 0,
+            "desc": "no discount",
+            "isIncludedInBase": true
+          }
+        },
+        "dailyRoomRates": {
+          "taxIncluded": false,
+          "breakup": [
+            {
+              "date": "2016-09-18",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-19",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-20",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-21",
+              "amount": 137.81,
+              "discount": null
+            },
+            {
+              "date": "2016-09-22",
+              "amount": 137.81,
+              "discount": null
+            }
+          ]
+        },
+        "refundable": true,
+        "onRequest": false,
+        "boardBasis": {
+          "code": "0",
+          "desc": "Full Breakfast",
+          "type": "bedAndBreakfast",
+          "amount": 0,
+          "amountIncludedInRate": true
+        },
+        "inclusions": [
+          "Free High-Speed Internet"
+        ],
+        "additionalCharges": [
+          "Resort fee of 100 USD will be collected at the time of checkin"
+        ],
+        "policies": [
+          {
+            "type": "Disclaimer",
+            "text": "By proceeding with this reservation, you agree to all terms and conditions, which include the Cancellation Policy and all terms and conditions contained in the User Agreement.  You agree to pay the cost of your reservation. If you do not pay this debt and it is collected through the use of a collection agency, an attorney, or through other legal proceedings, you agree to pay all reasonable costs or fees, including attorney fees and court costs, incurred in connection with such collection effort."
+          },
+          {
+            "type": "Charging",
+            "text": "Total amount will be charged by the ean after the booking."
+          }
+        ],
+        "offer": {
+          "title": "Save 15%",
+          "desc": "Save 15%",
+          "discountAmount": 50.0,
+          "discountPercentage": {
+            "value": 5.0,
+            "appliedOn": "baseRate/totalRate"
+          },
+          "payStay": {
+            "stayNights": 3,
+            "freeNights": 2
+          }
+        },
+        "bookingRequirement": {
+          "guaranteeRequired": false,
+          "depositRequired": false
+        },
+        "cancellationPolicy": {
+          "penalties": [
+            {
+              "window": {
+                "start": "2016-06-03T14:18:21.484428+05:30",
+                "end": "2016-09-17T23:59:00"
+              },
+              "supplierValue": 0.0,
+              "supplierValueType": "amount",
+              "calculatedAmount": 0.0
+            },
+            {
+              "window": {
+                "start": "2016-09-18T00:00:00",
+                "end": "2016-09-18T23:59:00"
+              },
+              "supplierValue": 1.0,
+              "supplierValueType": "nights",
+              "calculatedAmount": 228.85
+            }
+          ],
+          "text": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Courtyard by Marriott West Orange) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT-05:00) Eastern Time (US &amp; Canada)) on Sep 17, 2016, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  "
+        },
+        "rackRate": 1144.25,
+        "commission": {
+          "amount": 0,
+          "desc": "No commission on this rate"
+        },
+        "packageSaving": 0
+      }
+    ]
+  },
+  "policies": [
+    {
+      "type": "CheckInInstructions",
+      "text": "<p><b>Know Before You Go</b> <br /><ul>  <li>Children 16 years old and younger stay free when occupying the parent or guardian's room, using existing bedding. </li> </ul></p><p><b>Fees</b> <br /><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p> <ul> <li>Breakfast fee: between USD 4.99 and USD 9.99 per person (approximately)</li>  <li>Fee for in-room wireless Internet: USD 11.99 per stay (rates may vary)</li>              <li>Rollaway bed fee: USD 10.00 per day</li>  </ul> <p>The above list may not be comprehensive. Fees and deposits may not include tax and are subject to change. </p></p>"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "",
+      "message": ""
+    }
+  ]
+}

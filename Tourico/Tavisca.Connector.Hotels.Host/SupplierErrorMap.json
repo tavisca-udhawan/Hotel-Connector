@@ -1,0 +1,72 @@
+﻿[
+  {
+    "supplierError": "access denied",
+    "patternMatchType": "exactMatch",
+    "errorCode": "InvalidCredentials",
+    "category": "failure",
+    "httpStatusCode": "401"
+  },
+  {
+    "supplierError": "an unknown error has occurred.",
+    "patternMatchType": "exactMatch",
+    "errorCode": "supplierSystem",
+    "category": "failure",
+    "httpStatusCode": "500"
+  },
+  {
+    "supplierError": "declined",
+    "patternMatchType": "exactMatch",
+    "errorCode": "creditCardDeclined",
+    "category": "failure",
+    "httpStatusCode": "400"
+  },
+  {
+    "supplierError": "sold_out",
+    "patternMatchType": "exactMatch",
+    "errorCode": "selectedRoomNotAvailable",
+    "category": "failure",
+    "httpStatusCode": "404"
+  },
+  {
+    "supplierError": "not_available",
+    "patternMatchType": "exactMatch",
+    "errorCode": "selectedRoomNotAvailable",
+    "category": "failure",
+    "httpStatusCode": "404"
+  },
+  {
+    "supplierError": "match_subtotal_tax_fees",
+    "patternMatchType": "exactMatch",
+    "errorCode": "incorrectRateDetails",
+    "category": "failure",
+    "httpStatusCode": "404"
+  },
+  {
+    "supplierError": "unknown_error",
+    "patternMatchType": "exactMatch",
+    "errorCode": "supplierException",
+    "category": "failure",
+    "httpStatusCode": "500"
+  },
+  {
+    "supplierError": "duplicate",
+    "patternMatchType": "exactMatch",
+    "errorCode": "duplicateReservation",
+    "category": "failure",
+    "httpStatusCode": "400"
+  },
+  {
+    "supplierError": "500",
+    "patternMatchType": "exactMatch",
+    "errorCode": "supplierSystem",
+    "category": "failure",
+    "httpStatusCode": "500"
+  },
+  {
+    "supplierError": "Rate limit exceeded.",
+    "patternMatchType": "exactMatch",
+    "errorCode": "rateLimitExceeded",
+    "category": "failure",
+    "httpStatusCode": "500"
+  }
+]

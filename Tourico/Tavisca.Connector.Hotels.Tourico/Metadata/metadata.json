@@ -1,0 +1,118 @@
+{
+  "connectorIdentifier": "supplierName",
+  "supplierFamily": "supplierName",
+  "ipRestricted": "Yes",
+  "supportedCurrencies": [],
+  "properties": 3223,
+  "markets": [ "northAmerica", "SouthAmericaAndIslands", "USAndCanada" ],
+  "countriesSupported": [
+    "unitedStates",
+    "mexico",
+    "antiguaandBarbuda",
+    "canada",
+    "barbados",
+    "puertoRico",
+    "netherlandsAntilles",
+    "peru",
+    "aruba",
+    "theBahamas",
+    "saintKittsandNevis",
+    "turksandCaicosIslands",
+    "caymanIslands",
+    "saintLucia",
+    "costaRica",
+    "bermuda",
+    "dominicanRepublic",
+    "jamaica",
+    "saintVincentandtheGrenadines",
+    "panama",
+    "dominica",
+    "wallisandFutuna",
+    "grenada",
+    "virginIslands",
+    "britishVirginIslands"
+  ],
+  "staticContent": {
+    "cultures": [ "en-US" ],
+    "source": [ "aPIs", "fTPFeed" ],
+    "updateFrequency": "Weekly"
+  },
+  "paymentMode": [
+  ],
+  "merchantsOfRecord": [],
+  "rateTypes": [ "published" ],
+  "inventoryTypes": [ "prepaid" ],
+  "supportedCultures": [ "en-US" ],
+  "guestLimitForBooking": null,
+  "multiRoom": {
+    "supported": true,
+    "maxRoomsPerBooking": 9,
+    "maxGuestsPerRoom": null,
+    "fareType": "perRoom",
+    "allowDifferentOccupancies": true,
+    "cancellationType": "perBooking"
+  },
+  "verbs": {
+    "search": {
+      "patterns": [
+        "byHotelIds",
+        "byCity"
+      ],
+      "maxHotelsSupported": 25,
+      "maxRadiusKmAllowed": null,
+      "maxRateCodesAllowed": 0,
+      "optionalData": [],
+      "maxAllowedChildAge": null,
+      "advanceBookingLimit": null,
+      "sameDayBookingAllowed": true,
+      "maxStay": 30,
+      "requestOptions": []
+    },
+    "roomRates": {
+      "maxRateCodesAllowed": null,
+      "optionalData": [],
+      "requestOptions": [],
+      "statelessSupported": true
+    },
+    "rateRules": {
+      "rateCodeAllowed": false,
+      "cancellationPolicyFormat": "structured",
+      "optionalData": [],
+      "requestOptions": [],
+      "guaranteeRequired": false,
+      "depositRequired": false,
+      "refundablity": true,
+      "creditCardInfo": {
+        "rateSpecific": false,
+        "vendors": []
+      },
+      "allPaxRequiredForBooking": "never"
+    },
+    "book": {
+      "restriction": {
+        "firstNameMaxLength": 100,
+        "lastNameMaxLength": 100,
+        "specialCharacters": {
+          "allowedCharacters": [],
+          "disallowedCharacters": []
+        }
+      },
+      "requestOptions": [],
+
+      "formOfPaymentsSupported": [ "OnAccount" ]
+    },
+    "cancel": {
+      "supported": true,
+      "customerDetailsRequired": false
+    },
+    "getBookings": {
+      "supported": true,
+      "patterns": [
+        "byBookingId"
+      ],
+      "requestOptions": [
+        "status"
+      ]
+    }
+  }
+}

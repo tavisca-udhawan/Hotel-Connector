@@ -1,0 +1,327 @@
+{
+  "sessionId": "b2972e6a-9b9f-47ff-94fa-44b373c3a9de",
+  "itineraries": [
+    {
+      "hotelInfo": {
+        "id": "198720",
+        "name": "Gaylord Palms Resort & Convention Center"
+      },
+      "rate": {
+        "currency": "USD",
+        "minDailyRate": 263,
+        "inventoryTypes": [
+          "prepaid"
+        ]
+      },
+      "roomOptions": [
+        {
+          "refId": "81a587e1-4120-4def-8249-439bdd4430fa",
+          "code": "200225307",
+          "roomTypeCode": "829320",
+          "name": "Habitación (Florida)",
+          "desc": "Habitación (Florida)",
+          "availableRooms": 5,
+          "bedDetails": [
+            {
+              "type": "1 king",
+              "desc": "1 cama de matrimonio grande",
+              "count": 1
+            },
+            {
+              "type": "2 queen",
+              "desc": "2 camas de matrimonio",
+              "count": 2
+            }
+          ],
+          "maxOcccupancy": 3,
+          "smokingPreference": "nonSmoking"
+        }
+      ],
+      "occupancies": [
+        {
+          "refId": "5b368703-ec79-4986-a911-6d676f862ef4",
+          "adults": 1,
+          "children": 2
+        }
+      ],
+      "roomRate": {
+        "perRoomRates": [
+          {
+            "rateOccupancy": {
+              "refId": "f96a4ad6-9ffb-4ce2-860a-de61ad4de7ce",
+              "roomRefId": "56ae39e6-841c-428b-9e26-4cde1e784084",
+              "occupancyRefId": "989c39a7-be47-4ea0-a053-93841bfea815"
+            },
+            "code": "17382;11847422;2211101;2;2;2",
+            "desc": "This is a sample description",
+            "type": "negotiated",
+            "inventoryType": "prepaid",
+            "currency": "USD",
+            "total": 689.05,
+            "breakup": {
+              "baseRate": 596.60,
+              "taxesAndFees": [
+                {
+                  "amount": 92.45,
+                  "desc": "Service Tax",
+                  "code": "ST",
+                  "isIncludedInBase": false
+                }
+              ],
+              "discount": {
+                "amount": 0,
+                "desc": "no discount",
+                "isIncludedInBase": false
+              }
+            },
+            "dailyRoomRates": {
+              "taxIncluded": false,
+              "breakup": [
+                {
+                  "date": "2016-09-18",
+                  "amount": 137.81,
+                  "discount": null
+                },
+                {
+                  "date": "2016-09-19",
+                  "amount": 137.81,
+                  "discount": null
+                },
+                {
+                  "date": "2016-09-20",
+                  "amount": 137.81,
+                  "discount": null
+                },
+                {
+                  "date": "2016-09-21",
+                  "amount": 137.81,
+                  "discount": null
+                },
+                {
+                  "date": "2016-09-22",
+                  "amount": 137.81,
+                  "discount": null
+                }
+              ]
+            },
+            "bookingRequirement": {
+              "guaranteeRequired": false,
+              "depositRequired": false
+            },
+            "refundable": true,
+            "onRequest": false,
+            "cancellationPolicy": {
+              "penalties": [
+                {
+                  "window": {
+                    "start": "2016-06-03T14:17:59.488428+05:30",
+                    "end": "2016-09-23T00:00:00"
+                  },
+                  "supplierValue": "50",
+                  "supplierValueType": "percent",
+                  "calculatedAmount": 344.52
+                }
+              ],
+              "text": "This rate is 50% refundable"
+            },
+            "boardBasis": {
+              "code": "0",
+              "desc": "Full Breakfast",
+              "type": "bedAndBreakfast",
+              "amount": 0,
+              "amountIncludedInRate": true
+            },
+            "additionalCharges": [
+              "Resort fee of 100 USD will be collected at the time of checkin"
+            ],
+            "inclusions": [
+              "Free parking",
+              "Free Wifi"
+            ],
+            "policies": [
+              {
+                "type": "Disclaimer",
+                "text": "This is a disclaimer"
+              }
+            ],
+            "offer": {
+              "title": "Save 15%",
+              "desc": "Save 15%",
+              "discountAmount": 50.0,
+              "discountPercentage": {
+                "value": 5.0,
+                "appliedOn": "baseRate/totalRate"
+              },
+              "payStay": {
+                "stayNights": 3,
+                "freeNights": 2
+              }
+            },
+            "rackRate": 596.60,
+            "commission": {
+              "amount": 0,
+              "desc": "No commission on this rate"
+            },
+            "packageSaving": 0
+          }
+        ],
+        "perBookingRates": [
+          {
+            "rateOccupancies": [
+              {
+                "refId": "f96a4ad6-9ffb-4ce2-860a-de61ad4de7ce",
+                "roomRefId": "56ae39e6-841c-428b-9e26-4cde1e784084",
+                "occupancyRefId": "989c39a7-be47-4ea0-a053-93841bfea815"
+              }
+            ],
+            "code": "201555613",
+            "desc": null,
+            "type": "negotiated",
+            "inventoryType": "prepaid",
+            "currency": "USD",
+            "total": 1144.25,
+            "breakup": {
+              "baseRate": 995.0,
+              "taxesAndFees": [
+                {
+                  "amount": 149.25,
+                  "desc": "TaxAndServiceFee",
+                  "code": null,
+                  "isIncludedInBase": true
+                }
+              ],
+              "discount": {
+                "amount": 10,
+                "isIncludedInBase": true,
+                "desc": "discount description"
+              }
+            },
+            "dailyRoomRates": {
+              "taxIncluded": false,
+              "breakup": [
+                {
+                  "date": "2016-09-18T00:00:00",
+                  "amount": 199.0,
+                  "discount": null
+                },
+                {
+                  "date": "2016-09-19T00:00:00",
+                  "amount": 199.0,
+                  "discount": null
+                }
+              ]
+            },
+            "perRoomBreakups": [
+              {
+                "rateOccupancyRefId": "b0eb61d4-e09f-4e40-90e2-5bf7da518ae4",
+                "dailyRoomRates": {
+                  "taxIncluded": false,
+                  "breakup": [
+                    {
+                      "date": "2016-09-18T00:00:00",
+                      "amount": 199.0,
+                      "discount": null
+                    },
+                    {
+                      "date": "2016-09-19T00:00:00",
+                      "amount": 199.0,
+                      "discount": null
+                    },
+                    {
+                      "date": "2016-09-20T00:00:00",
+                      "amount": 199.0,
+                      "discount": null
+                    },
+                    {
+                      "date": "2016-09-21T00:00:00",
+                      "amount": 199.0,
+                      "discount": null
+                    },
+                    {
+                      "date": "2016-09-22T00:00:00",
+                      "amount": 199.0,
+                      "discount": null
+                    }
+                  ]
+                }
+              }
+            ],
+            "bookingRequirement": {
+              "guaranteeRequired": false,
+              "depositRequired": false
+            },
+            "refundable": true,
+            "onRequest": false,
+            "cancellationPolicy": {
+              "penalties": [
+                {
+                  "window": {
+                    "start": "2016-06-03T14:17:59.394828+05:30",
+                    "end": "2016-09-17T23:59:00"
+                  },
+                  "supplierValue": 0.0,
+                  "supplierValueType": "amount",
+                  "calculatedAmount": 0.0
+                },
+                {
+                  "window": {
+                    "start": "2016-09-18T00:00:00",
+                    "end": "2016-09-18T23:59:00"
+                  },
+                  "supplierValue": 1.0,
+                  "supplierValueType": "nights"
+                }
+              ],
+              "text": "We understand that sometimes your travel plans change. We do not charge a change or cancel fee. However, this property (Courtyard by Marriott West Orange) imposes the following penalty to its customers that we are required to pass on: Cancellations or changes made after 11:59 PM ((GMT-05:00) Eastern Time (US &amp; Canada)) on Sep 17, 2016, or no-shows, are subject to a 1 Night Room &amp; Tax penalty.  "
+            },
+            "boardBasis": {
+              "code": "0",
+              "desc": "Full Breakfast",
+              "type": "bedAndBreakfast",
+              "amount": 0,
+              "amountIncludedInRate": true
+            },
+            "additionalCharges": [
+              "Resort fee of 100 USD will be collected at the time of checkin"
+            ],
+            "inclusions": [
+              "Free parking",
+              "Free Wifi"
+            ],
+            "policies": [
+              {
+                "type": "Disclaimer",
+                "text": "This is a disclaimer"
+              }
+            ],
+            "offer": {
+              "title": "Save 15%",
+              "desc": "Save 15%",
+              "discountAmount": 50.0,
+              "discountPercentage": {
+                "value": 5.0,
+                "appliedOn": "baseRate/totalRate"
+              },
+              "payStay": {
+                "stayNights": 3,
+                "freeNights": 2
+              }
+            },
+            "rackRate": 10,
+            "commission": {
+              "amount": 0,
+              "desc": "No commission on this rate"
+            },
+            "packageSaving": 0.0
+          }
+        ]
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "code": "",
+      "message": ""
+    }
+  ]
+}

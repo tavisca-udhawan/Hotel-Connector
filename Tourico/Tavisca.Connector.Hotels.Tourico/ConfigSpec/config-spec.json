@@ -1,0 +1,87 @@
+[
+  {
+    "name": "userName",
+    "isMandatory": true,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Supplier credential userName",
+    "dataType": "string",
+    "displayName": "User Name",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "primary"
+
+  },
+  {
+    "name": "password",
+    "isMandatory": true,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Supplier credential password",
+    "dataType": "string",
+    "displayName": "Password",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "primary"
+  },
+  {
+    "name": "version",
+    "isMandatory": false,
+    "allowedValues": [ 7 ],
+    "defaultValue": "7",
+    "desc": "Supplier API version",
+    "dataType": "int",
+    "displayName": "API version",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "advanced"
+  },
+  {
+    "name": "deltaPriceForBooking",
+    "isMandatory": false,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Maximum pice change (in hotel currency returned in raterules response) at the time of booking for which booking should be allowed. If price change exceeds this value booking will fail",
+    "dataType": "number",
+    "displayName": "Delta Price For Booking",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "advanced"
+  },
+  {
+    "name": "bookingUrl",
+    "isMandatory": false,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Supplier booking api url. When not specified connector will pick appropriate url based on enviornment (istestenv)",
+    "dataType": "string",
+    "displayName": "Booking Url",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "advanced"
+  },
+  {
+    "name": "url",
+    "isMandatory": false,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Supplier api url. When not specified connector will pick appropriate url based on enviornment (istestenv)",
+    "dataType": "string",
+    "displayName": "Url",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "advanced"
+  },
+  {
+    "name": "cancelUrl",
+    "isMandatory": false,
+    "allowedValues": [],
+    "defaultValue": "",
+    "desc": "Supplier cancel api url. When not specified connector will pick appropriate url based on enviornment (istestenv)",
+    "dataType": "string",
+    "displayName": "CancelationUrl",
+    "isArray": false,
+    "validationRegex": "",
+    "type": "advanced"
+  }
+]

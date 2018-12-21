@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Tavisca.Connector.Hotels.Tourico</AssemblyName>
+    <PackageId>Tavisca.Connector.Hotels.Tourico</PackageId>        
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+	<Configurations>Debug;Release;USENUGET</Configurations>
+  </PropertyGroup>
+  
+    <Choose>
+     <When Condition=" '$(Configuration)'=='USENUGET' ">
+       <ItemGroup>
+         <PackageReference Include="Tavisca.Platform.Common.Core" Version="1.0.5" />
+       </ItemGroup>
+     </When>
+     <When Condition=" '$(Configuration)'!='USENUGET' " />
+   </Choose>
+  
+    <ItemGroup>
+      <None Remove="ConfigSpec\config-spec.json" />
+      <None Remove="Metadata\metadata.json" />
+    </ItemGroup>
+  
+    <ItemGroup>
+      <EmbeddedResource Include="ConfigSpec\config-spec.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+  
+    <ItemGroup>
+      <EmbeddedResource Include="Metadata\metadata.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\submodule\HotelsCommon\Tavisca.Connector.Hotels.Common\Tavisca.Connector.Hotels.Common.csproj" />
+    <ProjectReference Include="..\submodule\HotelsCommon\Tavisca.Connector.Hotels.Model\Tavisca.Connector.Hotels.Model.csproj" />
+  </ItemGroup>
+
+   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="SoapCore" Version="0.9.9.1" />
+    <PackageReference Include="System.Private.ServiceModel" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.5.3" />
+   </ItemGroup>
+
+   <ItemGroup>
+     <Reference Include="Microsoft.IdentityModel.Protocols.WsFederation">
+       <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.identitymodel.protocols.wsfederation\5.2.0\lib\netstandard1.4\Microsoft.IdentityModel.Protocols.WsFederation.dll</HintPath>
+     </Reference>
+   </ItemGroup>
+
+</Project>

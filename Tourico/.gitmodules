@@ -1,0 +1,3 @@
+[submodule "submodule/HotelsCommon"]
+	path = submodule/HotelsCommon
+	url = git@github.com:TaviscaSolutions/connector-hotels-common.git

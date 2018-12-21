@@ -1,0 +1,315 @@
+﻿{
+  "retrieveBookingResponse": [
+    {
+      "bookingDetails": {
+        "hotelId": "451542",
+        "supplierConfirmationNum": "123",
+        "vendorConfirmationNum": "123ABC",
+        "bookingToken": "",
+        "status": "confirmed",
+        "checkInDate": "2017-09-18T00:00:00",
+        "checkOutDate": "2017-09-18T00:00:00",
+        "cancellationToken": "123ABC",
+        "bookingCreationDate": "2017-07-10T00:00:00"
+      },
+      "rate": {
+        "type": "negotiated",
+        "inventoryType": "prepaid",
+        "currency": "USD",
+        "total": 1144.25,
+        "breakup": {
+          "baseRate": 995,
+          "taxesAndFees": [
+            {
+              "amount": 149.25,
+              "isIncludedInBase": false,
+              "code": null,
+              "desc": "TaxAndServiceFee"
+            }
+          ],
+          "discount": {
+            "amount": 0,
+            "isIncludedInBase": false,
+            "desc": "no discount"
+          }
+        },
+        "dailyRates": {
+          "taxIncluded": false,
+          "breakup": [
+            {
+              "date": "2016-09-18T00:00:00",
+              "amount": 199,
+              "discount": null
+            },
+            {
+              "date": "2016-09-19T00:00:00",
+              "amount": 199,
+              "discount": null
+            },
+            {
+              "date": "2016-09-20T00:00:00",
+              "amount": 199,
+              "discount": null
+            },
+            {
+              "date": "2016-09-21T00:00:00",
+              "amount": 199,
+              "discount": null
+            },
+            {
+              "date": "2016-09-22T00:00:00",
+              "amount": 199,
+              "discount": null
+            }
+          ]
+        },
+        "refundable": true,
+        "cancellationPolicy": {
+          "penalties": [
+            {
+              "window": {
+                "start": "2016-06-03T14:18:21.484428+05:30",
+                "end": "2016-09-17T23:59:00"
+              },
+              "supplierValue": 0,
+              "supplierValueType": "amount",
+              "calculatedAmount": 0
+            }
+          ],
+          "text": "We understand that sometimes your travel plans change."
+        },
+        "boardBasis": {
+          "code": "0",
+          "desc": "Full Breakfast",
+          "type": "bedAndBreakfast",
+          "amount": 0,
+          "amountIncludedInRate": true
+        },
+        "inclusions": [
+          "Free High-Speed Internet"
+        ],
+        "additionalCharges": [
+          "Resort fee of 100 USD will be collected at the time of checkin"
+        ],
+        "policies": [
+          {
+            "type": "Disclaimer",
+            "text": "By proceeding with this reservation, you agree to all terms and conditions."
+          },
+          {
+            "type": "Charging",
+            "text": "Total amount will be charged by the ean after the booking."
+          }
+        ],
+        "offer": {
+          "title": "Save 15%",
+          "desc": "Save 15%",
+          "discountAmount": 50,
+          "discountPercentage": {
+            "value": 5,
+            "appliedOn": "baseRate/totalRate"
+          },
+          "payStay": {
+            "stayNights": 3,
+            "freeNights": 2
+          }
+        },
+        "rackRate": 1144.25,
+        "commission": {
+          "amount": 0,
+          "desc": "No commission on this rate"
+        },
+        "packageSaving": 0,
+        "rooms": [
+          {
+            "supplierConfirmationNum": "123",
+            "vendorConfirmationNum": "123ABC",
+            "status": "confirmed",
+            "code": "266258",
+            "roomTypeCode": "375072",
+            "name": "Standard Meadow Tower",
+            "guests": [
+              {
+                "type": "adult",
+                "age": 35,
+                "name": {
+                  "first": "John",
+                  "last": "Doe",
+                  "middle": "Jany",
+                  "title": "mr",
+                  "suffix": "JR"
+                }
+              },
+              {
+                "type": "child",
+                "age": 3,
+                "name": {
+                  "first": "Jenny",
+                  "last": "Roe",
+                  "middle": "Jany",
+                  "title": "Mr",
+                  "suffix": "JR"
+                }
+              }
+            ],
+            "rate": {
+              "code": "201555598",
+              "description": "Standard Room, 1 King Bed",
+              "type": "negotiated",
+              "inventoryType": "prepaid",
+              "currency": "USD",
+              "total": 1144.25,
+              "breakup": {
+                "baseRate": 995,
+                "taxesAndFees": [
+                  {
+                    "amount": 149.25,
+                    "isIncludedInBase": false,
+                    "code": null,
+                    "desc": "TaxAndServiceFee"
+                  }
+                ],
+                "discount": {
+                  "amount": 0,
+                  "isIncludedInBase": false,
+                  "desc": "no discount"
+                }
+              },
+              "dailyRates": {
+                "taxIncluded": false,
+                "breakup": [
+                  {
+                    "date": "2016-09-18T00:00:00",
+                    "amount": 199,
+                    "discount": null
+                  },
+                  {
+                    "date": "2016-09-19T00:00:00",
+                    "amount": 199,
+                    "discount": null
+                  },
+                  {
+                    "date": "2016-09-20T00:00:00",
+                    "amount": 199,
+                    "discount": null
+                  },
+                  {
+                    "date": "2016-09-21T00:00:00",
+                    "amount": 199,
+                    "discount": null
+                  },
+                  {
+                    "date": "2016-09-22T00:00:00",
+                    "amount": 199,
+                    "discount": null
+                  }
+                ]
+              },
+              "refundable": true,
+              "cancellationPolicy": {
+                "penalties": [
+                  {
+                    "window": {
+                      "start": "2016-06-03T14:18:21.484428+05:30",
+                      "end": "2016-09-17T23:59:00"
+                    },
+                    "supplierValue": 0,
+                    "supplierValueType": "amount",
+                    "calculatedAmount": 0
+                  }
+                ],
+                "text": "We understand that sometimes your travel plans change."
+              },
+              "boardBasis": {
+                "code": "0",
+                "desc": "Full Breakfast",
+                "type": "bedAndBreakfast",
+                "amount": 0,
+                "amountIncludedInRate": true
+              },
+              "inclusions": [
+                "Free High-Speed Internet"
+              ],
+              "additionalCharges": [
+                "Resort fee of 100 USD will be collected at the time of checkin"
+              ],
+              "policies": [
+                {
+                  "type": "Disclaimer",
+                  "text": "By proceeding with this reservation, you agree to all terms and conditions."
+                },
+                {
+                  "type": "Charging",
+                  "text": "Total amount will be charged by the ean after the booking."
+                }
+              ],
+              "offer": {
+                "title": "Save 15%",
+                "desc": "Save 15%",
+                "discountAmount": 50,
+                "discountPercentage": {
+                  "value": 5,
+                  "appliedOn": "baseRate/totalRate"
+                },
+                "payStay": {
+                  "stayNights": 3,
+                  "freeNights": 2
+                }
+              },
+              "rackRate": 1144.25,
+              "commission": {
+                "amount": 0,
+                "desc": "No commission on this rate"
+              },
+              "packageSaving": 0
+            }
+          }
+        ]
+      },
+      "bookingContact": {
+        "name": {
+          "firstName": "FirstName",
+          "middleName": "MiddleName",
+          "lastName": "LastName",
+          "title": "mr",
+          "suffix": "Jr"
+        },
+        "age": 30,
+        "contactInfo": {
+          "phone": {
+            "type": "mobile",
+            "number": "9087654321",
+            "countryCode": "91",
+            "extention": "123",
+            "areaCode": "022"
+          },
+          "address": {
+            "line1": "AddressLine1",
+            "line2": "AddressLine2",
+            "city": {
+              "code": "PNQ",
+              "name": "Pune"
+            },
+            "state": {
+              "code": "MH",
+              "name": "Maharashtra"
+            },
+            "countryCode": "IN",
+            "postalCode": "411014"
+          },
+          "email": "abc@xyz.com"
+        },
+        "membership": {
+          "chainCode": "",
+          "num": ""
+        }
+      }
+    }
+  ],
+  "warnings": [
+    {
+      "code": "",
+      "message": ""
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "status": "confirmed",
+  "supplierConfirmationNum": "123",
+  "vendorConfirmationNum": "123ABC",
+  "cancellationToken": "123ABC",
+  "roomBookingDetails": [
+    {
+      "rateCode": "21315",
+      "roomCode": "245677",
+      "supplierConfirmationNum": "123",
+      "vendorConfirmationNum": "123ABC",
+      "cancellationToken": "123ABC",
+      "status": "confirmed"
+    }
+  ],
+  "errors": [
+    {
+      "code": "123",
+      "message": "payment gateway timed out"
+    }
+  ],
+  "warnings": [
+    {
+      "code": "3434",
+      "message": "Booked at different price than raterule. New price is USD 12.35"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "supplierCancellationNum": "ABC",
+  "vendorCancellationNum": "ABC",
+  "roomCancellationDetails": [
+    {
+      "supplierConfirmationNum": "123",
+      "supplierCancellationNum": "123ABC",
+      "vendorCancellationNum": "123ABC"
+    }
+  ],
+  "errors": [
+    {
+      "code": "",
+      "message": "",
+      "confirmationNum": ""
+    }
+  ]
+}
