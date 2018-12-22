@@ -47,7 +47,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Common
                 Password=supplier[SupplierConstants.SupplierConfig.Password],
                 UserId=supplier[SupplierConstants.SupplierConfig.UserId],
                 Culture=supplier[SupplierConstants.SupplierConfig.Culture],
-                IsPublished=bool.Parse(supplier[SupplierConstants.SupplierConfig.IsPublished])
+              //  IsPublished= bool.Parse(supplier[SupplierConstants.SupplierConfig.IsPublished])
 
             };
             return supplierConfiguration;
@@ -84,7 +84,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Common
         private static readonly string testRetrieveUrl = "";
         private static readonly string prodRetrieveUrl = "";
 
-        private static readonly string testUrl = "";
+        private static readonly string testUrl = "http://demo-hotelws.touricoholidays.com/HotelFlow.svc/bas";
         private static readonly string prodUrl = "";
 
         internal static string GetStaticUrl(bool isTestEnv, string verb)

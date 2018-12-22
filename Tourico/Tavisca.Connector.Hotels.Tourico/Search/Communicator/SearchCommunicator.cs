@@ -23,7 +23,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
             _connector = connector;
         }
 
-        internal async Task<HttpResponse> GetHotelsAsync(SupplierSearchRq supplierRequest, Supplier supplier, SupplierConfiguration supplierConfiguration)
+        internal async Task<HttpResponse> GetHotelsAsync(SearchHotelsByIdRequest1 supplierRequest, Supplier supplier, SupplierConfiguration supplierConfiguration)
         {
             using (var profileScope = new ProfileContext("Tourico-ConnectorCall", false))
             {

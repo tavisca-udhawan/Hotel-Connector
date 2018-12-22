@@ -29,12 +29,14 @@ namespace Tavisca.Connector.Hotels.Tourico.Search
 
         public async Task<SearchResponse> SearchAsync(ConnectorSearch.SearchRequest request)
         {
-            var sessionId = Guid.NewGuid().ToString();
             SearchResponse response;
             try
             {
                 using (var profileScope = new ProfileContext("Tourico-SearchAsync", false))
                 {
+
+                    var sessionId = Guid.NewGuid().ToString();
+                    request.SessionId = sessionId;
                     //1.Request Validation
                     var errors = new SearchRequestValidator(_metadata).Validate(request);
                     if (errors != null && errors.Count > 0)

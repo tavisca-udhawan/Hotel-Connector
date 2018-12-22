@@ -8560,7 +8560,7 @@ public partial class SearchResult
 [System.Xml.Serialization.XmlTypeAttribute(Namespace = "http://tourico.com/webservices/hotelv3")]
 public partial class Feature
 {
-
+    
     private string nameField;
 
     private string valueField;
