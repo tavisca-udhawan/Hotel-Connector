@@ -11,6 +11,7 @@ using Tavisca.Platform.Common;
 using Tavisca.Platform.Common.Profiling;
 using Tavisca.Platform.Common.Serialization;
 using static Tavisca.Connector.Hotels.Tourico.Common.Proxy.SupplierProxy;
+using Tavisca.Connector.Hotels.Tourico.Search.Proxy;
 
 namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
 {
@@ -23,29 +24,18 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
             _connector = connector;
         }
 
-        internal async Task<HttpResponse> GetHotelsAsync(SearchHotelsByIdRequest1 supplierRequest, Supplier supplier, SupplierConfiguration supplierConfiguration)
+        internal async Task<SearchResult> GetHotelsAsync(SearchHotelsByIdRequest1 supplierRequest, SupplierConfiguration supplierConfiguration)
         {
             using (var profileScope = new ProfileContext("Tourico-ConnectorCall", false))
             {
-               
-                var settings = new HttpSettings()
-                                   .WithSerializer(new XmlSerializer())
-                                .WithConnector(_connector);
-
-                var httpRequest = Http.NewPostRequest(new Uri(supplierConfiguration.Url), settings)
-                    .WithBody(supplierRequest)
-                    .WithTimeout(TimeSpan.FromSeconds(supplierConfiguration.TimeOutInSeconds))
-                    .WithHeaders(HeadersHelper.GetHeaders())
-                    .WithFaultPolicy(new TouricoFaultPolicy())
-                    .WithHttpFilter(new Common.WebCaller.LoggingHttpFilter())
-                    .WithHttpFilter(new ResponseDataExtractorHttpFilter<SupplierSearchRs, ErrorTypes>(new DataLogger().ExtractDataFromSearchResponse))
-                    .WithApiLogData(SupplierConstants.SearchConstants.Api, SupplierConstants.SearchConstants.Verb, SupplierConstants.SearchConstants.MethodName, supplierConfiguration)
-                    .WithSupplierLogData(supplier);
-
-                HttpResponse httpResponse = null;
+           //  var httpRequest = CreateHttpRequest(supplierRequest, supplierConfiguration);
+                 HttpResponse httpResponse = null;
                 try
                 {
-                    httpResponse = await httpRequest.SendAsync();
+                    var touricoClient = new TouricoClient(supplierConfiguration);
+                      var hotelList =  touricoClient.GetHotels(supplierRequest);
+                     return hotelList;
+                    //httpResponse = await httpRequest.SendAsync();
                 }
                 catch (BaseApplicationException bae)
                 {
@@ -59,11 +49,30 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
                 {
                     throw new SupplierException(FaultCodes.SupplierException, FaultMessages.SupplierException, HttpStatusCode.InternalServerError, exception);
                 }
-                return httpResponse;
+                
             }
         }
+
+     /*   private HttpRequest CreateHttpRequest(SearchHotelsByIdRequest1 supplierRequest, SupplierConfiguration supplierConfiguration)
+               {
+            var settings = new HttpSettings()
+                                .WithSerializer(new XmlSerializer())
+                                .WithConnector(_connector);
+
+
+
+            var httpRequest = Http.NewGetRequest(new Uri(supplierConfiguration.Url), settings)
+                .WithHeaders(HeadersHelper.GetHeaders())
+                .WithFaultPolicy(new TouricoFaultPolicy().IsFaultedAsync)
+                .WithHttpFilter(new Common.WebCaller.LoggingHttpFilter())
+                .WithHttpFilter(new ResponseDataExtractorHttpFilter<SupplierSearchRs, ErrorTypes>(new DataLogger().ExtractDataFromSearchResponse))
+                .WithApiLogData(SupplierConstants.SearchConstants.Api, SupplierConstants.SearchConstants.Verb, SupplierConstants.SearchConstants.MethodName, supplierConfiguration);
+               // .WithSupplierLogData(supplier);
+            return httpRequest;
+        }*/
     }
 
+   
     public class TouricoFaultPolicy : IFaultPolicy
     {
         public static IFaultPolicy Instance

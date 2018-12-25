@@ -15,8 +15,8 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Request
             return new SearchHotelsByIdRequest1
             {
                 AuthenticationHeader= HeaderAuthentication(request),
-                request= InitiateSearchRequest(request),
-                features =GetFeatures(request)
+                request= SearchRequest(request),
+                features= GetFeatures(request)
             };
         }
       
@@ -30,7 +30,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Request
                 Culture=Culture.en_US
             };
         }
-        private SearchHotelsByIdRequest InitiateSearchRequest(ConnectorSearch.SearchRequest request)
+        private SearchHotelsByIdRequest SearchRequest(ConnectorSearch.SearchRequest request)
         {
             return new SearchHotelsByIdRequest
             {

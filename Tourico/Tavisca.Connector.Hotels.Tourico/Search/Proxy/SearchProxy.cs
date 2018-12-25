@@ -11,13 +11,10 @@
 [assembly: System.Runtime.Serialization.ContractNamespaceAttribute("http://schemas.tourico.com/webservices/authentication", ClrNamespace = "schemas.tourico.com.webservices.authentication")]
 [assembly: System.Runtime.Serialization.ContractNamespaceAttribute("http://schemas.tourico.com/webservices/faults", ClrNamespace = "schemas.tourico.com.webservices.faults")]
 
-
-
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ServiceModel.ServiceContractAttribute(Namespace = "http://tourico.com/webservices/hotelv3", ConfigurationName = "IHotelFlow")]
 public interface IHotelFlow
 {
-
     // CODEGEN: Generating message contract since message SearchHotelsRequest has headers
     [System.ServiceModel.OperationContractAttribute(Action = "http://tourico.com/webservices/hotelv3/IHotelFlow/SearchHotels", ReplyAction = "http://tourico.com/webservices/hotelv3/IHotelFlow/SearchHotelsResponse")]
     [System.ServiceModel.FaultContractAttribute(typeof(schemas.tourico.com.webservices.faults.WSFault), Action = "SearchHotels", Name = "WSFault", Namespace = "http://schemas.tourico.com/webservices/faults")]

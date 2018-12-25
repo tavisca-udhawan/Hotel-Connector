@@ -45,18 +45,19 @@ namespace Tavisca.Connector.Hotels.Tourico.Search
                     //2.Create Supplier Request
                     var supplierConfigurations = request.Supplier.GetConfigurations();
                     var supplierRequest = new RequestTranslator().CreateRequest(request, supplierConfigurations);
-
+                  
                     //3.Supplier Call
-                    var httpResponse = await new SearchCommunicator(_connector).GetHotelsAsync(supplierRequest, request.Supplier, supplierConfigurations);
+                    var httpResponse = await new SearchCommunicator(_connector).GetHotelsAsync(supplierRequest,supplierConfigurations);
                     //TODO: If supplier provide error as different object then use GetResponseOrFaultAsync else use GetResponseAsync
-                    //var response = await httpResponse.GetResponseAsync<SupplierSearchRs>();
-                    var supplierResponse = await httpResponse.GetResponseOrFaultAsync<SupplierSearchRs, ErrorTypes>();
+                    // var response = await httpResponse.GetResponseAsync<SupplierSearchRs>();
+                    // var supplierResponse = await httpResponse.GetResponseOrFaultAsync<SupplierSearchRs, ErrorTypes>();
 
                     //4.Handle Supplier Error Exception (if response is failure)
-                    new ErrorLogger().LogSupplierError(supplierResponse, httpResponse, request);
+                    //new ErrorLogger().LogSupplierError(supplierResponse, httpResponse, request);
 
                     //5.Parse Supplier Response
-                    response = new ResponseTranslator().ParseResponse(supplierResponse.Response, supplierConfigurations);
+                    // response = new ResponseTranslator().ParseResponse(supplierResponse, supplierConfigurations);
+                    response = new ResponseTranslator().ParseResponse(httpResponse, sessionId,request,supplierConfigurations);
                 }
             }
             catch (Exception exception)
