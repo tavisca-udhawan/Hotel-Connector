@@ -10,16 +10,16 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
 {
     public class ErrorLogger
     {
-        internal void LogSupplierError(ResponseOrFault<SupplierSearchRs, ErrorTypes> supplierResponse, HttpResponse httpResponse, ConnectorSearch.SearchRequest request)
+        internal void LogSupplierError( SearchResult supplierResponse, ConnectorSearch.SearchRequest request)
         {
-            if (supplierResponse.IsFaulted)
+            if (supplierResponse!=null)
             {
                 //Added Supplier Error Handling
-                var error = supplierResponse.Fault.Errors.First();
-                LogHelper.WriteSupplierErrorLog(httpResponse.LogData[Logging.SupplierErrorCode].ToString(), httpResponse.LogData[Logging.SupplierErrorMessage].ToString(), error.Code, error.Text,
-                        SearchConstants.MethodName, request.Supplier?.Name, request.Supplier?.Id,
-                        SearchConstants.Api, SearchConstants.Verb, HeadersHelper.GetHeaders(), httpResponse.Headers);
-                throw new SupplierException(error.Code, error.Text, httpResponse.Status);
+             //   var error = supplierResponse.Fault.Errors.First();
+                //LogHelper.WriteSupplierErrorLog(supplierResponse.LogData[Logging.SupplierErrorCode].ToString(), supplierResponse.LogData[Logging.SupplierErrorMessage].ToString(), error.Code, error.Text,
+                //        SearchConstants.MethodName, request.Supplier?.Name, request.Supplier?.Id,
+                //        SearchConstants.Api, SearchConstants.Verb, HeadersHelper.GetHeaders(), httpResponse.Headers);
+             //   throw new SupplierException(error.Code, error.Text, supplierResponse.Status);
             }
         }
     }
