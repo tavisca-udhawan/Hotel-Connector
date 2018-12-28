@@ -40,15 +40,13 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
             {
                 try
                 {
-                    if (!isRequestedRoomsAvailable(hotel, request.Criteria.Occupancies.Count))
-                        continue;
                     Info.HotelInfo hotelInfo = ParsingHotelInfo(hotel);
                     List<ResponseOccupancy> occupancies = null;
                     List<RoomOption> roomOptions =null;
                     Rates.RoomRates roomRates = RoomRatesParser(hotel, request, supplier,out occupancies,out roomOptions);
                     var numberOfNights = request.Criteria.CheckOut.Date.Subtract(request.Criteria.CheckIn.Date).Days;
-              
-                    var hotelItinerary = new Itinerary(hotelInfo, ParseHotelRates(hotel, request.Criteria.Occupancies, roomRates, occupancies, numberOfNights), optionalDataRequired ? roomOptions : null, optionalDataRequired ? occupancies : null, optionalDataRequired ? roomRates : null);
+                    var parseHotelRates = ParseHotelRates(hotel, request.Criteria.Occupancies, roomRates, occupancies, numberOfNights);
+                    var hotelItinerary = new Itinerary(hotelInfo, parseHotelRates, optionalDataRequired ? roomOptions : null, optionalDataRequired ? occupancies : null, optionalDataRequired ? roomRates : null);
                     itineries.Add(hotelItinerary);
                 }
                 catch (Exception)
@@ -56,8 +54,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
                     throw new Exception("Unavailable to get response");
                 }
             }
-
-            return itineries;
+           return itineries;
         }
        
         private Rates.RoomRates RoomRatesParser(Hotel hotel, ConnectorSearch.SearchRequest request, SupplierConfiguration supplier,out List<ResponseOccupancy> occupancies,out List<RoomOption> roomOptions)
@@ -80,6 +77,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
                     }
                     else
                         rooms.Add(rooms[0]);
+
                     //parsing room options
                     var roomOption = ParseRoomOption(roomTypes, occupancy);
                     roomOptions.Add(roomOption);
@@ -141,31 +139,32 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
             }
             else
                 perRoomRates.Add(ParsePerRoomRate(hotel, configurations,null, roomType, occupancy, rateOccupancies, mandatorySupplements));
+        
             return perRoomRates;
         }
         private PerRoomRate ParsePerRoomRate(Hotel hotel,SupplierConfiguration configurations,Boardbase boardBase, RoomType roomType, Occupancy occupancy, RateOccupancy rateOccupancy, List<Supplement> mandatorySupplements)
         {
-            var supplementPrice = ParseSupplementPrice(mandatorySupplements);
-            var totalPrice = occupancy.occupPrice + boardBase.bbPrice + supplementPrice;
-
             var code = occupancy.occupId;
             var rateType = configurations.IsPublished ? RateType.Published : RateType.Negotiated;
             var refundable = roomType.isNonRefundableSpecified ? !roomType.isNonRefundable : (bool?)null;
             var boardBasis = boardBase != null ? ParseBoardBasis(boardBase) : null;
+            var supplementPrice = ParseSupplementPrice(mandatorySupplements);
+            var totalPrice = occupancy.occupPrice + (boardBase?.bbPrice ?? 0) + supplementPrice;
             var baseRate = totalPrice - occupancy.tax;
-            var taxes = ParseTaxes(occupancy);
+            var taxesAndFees = ParseTaxesAndFees(occupancy);
             var discount = ParseDiscount(roomType);
             var inclusions = ParseInclusions(mandatorySupplements);
             var additionalCharges = GetAdditionalCharges(hotel,mandatorySupplements);
             var additionalChargesInfo = GetAdditionalChargesInfo(hotel,mandatorySupplements);
-
+            var offerParsing = ParseOffer(hotel, roomType);
+            var bookingRequirementParsing = ParseBookingRequirement();
+            var rackRateParsing = ParseRackRate(boardBase, occupancy, supplementPrice);
             return new PerRoomRate(rateOccupancy, code, null, rateType,
                 InventoryType.Prepaid, hotel.currency,
-                totalPrice, new RateBreakup(baseRate, taxes, discount),
+                totalPrice, new RateBreakup(baseRate, taxesAndFees, discount),
                 ParseDailyRoomRate(occupancy),
-                ParseBookingRequirement(), refundable, false, null,
-                boardBasis, additionalCharges, additionalChargesInfo, null, inclusions, ParseOffer(hotel,roomType), null,
-                ParseRackRate(boardBase, occupancy, supplementPrice));
+                bookingRequirementParsing, refundable, false, null,
+                boardBasis, additionalCharges, additionalChargesInfo, null, inclusions,offerParsing , null,rackRateParsing );
         }
             private RateOccupancy ParseRateOccupancy(string roomRefId,string occupancyrefId)
         {
@@ -199,7 +198,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
                 if (bedOccupancy.Length > 1)
                 {
                     bedCount = Convert.ToInt32(bedOccupancy[1]);
-                    description = $"{bedOccupancy[1]} bed(s) for {bedOccupancy[0]} guest(s)";
+                    description = $"{bedOccupancy[1]} bed for {bedOccupancy[0]} guest";
                 }
 
                 details.Add(new BedDetail(null, description, bedCount));
@@ -226,7 +225,7 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
             }
             foreach (var requestedOccupancy in requestedOccupancies)
             {
-                var correspondingResponseOccupancy = responseOccupancies.Find(x => x.Adults == requestedOccupancy.NumOfAdults && x.Children == (requestedOccupancy.ChildAges?.Count ?? 0));
+                var correspondingResponseOccupancy = responseOccupancies.Find(x => x.Adults == requestedOccupancy.NumOfAdults && x.Children == (requestedOccupancy.ChildAges.Count>0? requestedOccupancy.ChildAges.Count:0));
                 decimal min;
                 if (correspondingResponseOccupancy != null && occupancyWiseMinRates.TryGetValue(correspondingResponseOccupancy.RefId, out min))
                     minDailyRate += min;
@@ -256,29 +255,32 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
 
         private List<string> GetAdditionalCharges(Hotel hotel,List<Supplement> supplements)
         {
-            return null;
-        }
+            return (from supplement in supplements
+             where supplement.suppChargeType == ChargeType.AtProperty
+             select string.Format(supplement.suppName, hotel.currency, supplement.price)).ToList();
+}
 
         private List<AdditionalChargeInfo> GetAdditionalChargesInfo(Hotel hotel,List<Supplement> supplements)
         {
-            var additionalChargeInfos = new List<AdditionalChargeInfo>();
-            foreach (var payAtHotelSupplement in supplements?.Where(supplement => supplement?.suppChargeType == ChargeType.AtProperty))
+            var additionalChargeInformation = new List<AdditionalChargeInfo>();
+            foreach (var supplement in supplements.Where(supplementType => supplementType.suppChargeType == ChargeType.AtProperty))
             {
-                if (payAtHotelSupplement != null)
+                if (supplement != null)
                 {
-                    var additionalCharge = new AdditionalCharge
+                    var charge = new AdditionalCharge
                     {
-                        Description = payAtHotelSupplement.suppName,
+                        Description = supplement.suppName,
+                        Amount = supplement.price,
+                        Currency = hotel.currency,
                         Type = AdditionalChargeType.ResortFee,
-                        Unit =AdditionalChargeUnit.PerRoom,
-                        Frequency = AdditionalChargeFrequency.PerNight, // This is as per email from saurav banerjee.
-                        Amount = payAtHotelSupplement.price,
-                        Currency = hotel.currency
+                        Unit = AdditionalChargeUnit.PerRoom,
+                        Frequency = AdditionalChargeFrequency.PerNight
                     };
-                    additionalChargeInfos.Add(new AdditionalChargeInfo { Charge = additionalCharge });
+                    additionalChargeInformation.Add(new AdditionalChargeInfo { Charge = charge,
+                         Text=null});
                 }
             }
-            return additionalChargeInfos;
+            return additionalChargeInformation;
         }
 
         private BookingRequirement ParseBookingRequirement()
@@ -286,12 +288,13 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
             return new BookingRequirement(false, false);
         }
 
-        private List<FareComponent> ParseTaxes(Occupancy occupancy)
+        private List<FareComponent> ParseTaxesAndFees(Occupancy occupancy)
         {
             var taxes = new List<FareComponent>();
 
             if (occupancy.TaxBreakdown != null && occupancy.TaxBreakdown.Length > 0)
             {
+               
                 taxes.AddRange(from tax in occupancy.TaxBreakdown
                                select new FareComponent(tax.value, false, null, tax.type.ToString()));
             }
@@ -305,48 +308,90 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Translators.Response
 
         private decimal ParseRackRate(Boardbase boardBase, Occupancy occupancy, decimal supplementPrice)
         {
-            return occupancy.occupPublishPrice + boardBase.bbPublishPrice +supplementPrice;
+            return occupancy.occupPublishPrice + (boardBase?.bbPublishPrice ?? 0) +
+                  supplementPrice;
+            // return occupancy.occupPublishPrice + boardBase.bbPublishPrice +supplementPrice;
         }
 
         private DailyRoomRate ParseDailyRoomRate(Occupancy occupancy)
         {
-            var dailyRoomRateBreakups = new List<DailyRoomRateBreakup>();
+            var dailyRoomRateBreakup = new List<DailyRoomRateBreakup>();
             if (occupancy.PriceBreakdown != null && occupancy.PriceBreakdown.Length > 0)
             {
                 var prices = occupancy.PriceBreakdown;
-                dailyRoomRateBreakups.AddRange(from price in prices
-                                               select new DailyRoomRateBreakup(_criteria.CheckIn.AddDays(price.offset), price.value));
+                dailyRoomRateBreakup.AddRange(from price in prices
+                                               select new DailyRoomRateBreakup(_criteria.CheckIn.AddDays(price.offset), price.value,null));
             }
 
-            return dailyRoomRateBreakups.Count > 0 ? new DailyRoomRate(dailyRoomRateBreakups, true) : null;
+            return dailyRoomRateBreakup.Count > 0 ? new DailyRoomRate(dailyRoomRateBreakup, true) : null;
         }
 
         private Offer ParseOffer(Hotel hotel,RoomType roomType)
         {
-          
+            if (roomType.Discount != null)
+            {
+                if((_criteria.CheckIn>=roomType.Discount.from &&_criteria.CheckIn<=roomType.Discount.to)&&
+                    (_criteria.CheckOut >= roomType.Discount.from && _criteria.CheckOut <= roomType.Discount.to))
+                {
+                    var progressivePromotion = roomType.Discount as ProgressivePromotion;
+                    var payStayPromotion = roomType.Discount as PayStayPromotion;
+                    if (progressivePromotion != null)
+                    {
+                        if (progressivePromotion.type.Equals(ProgressiveTypes.Amount))
+                        {
+                            return new Offer (string.IsNullOrWhiteSpace(progressivePromotion.name) ? progressivePromotion.name:null,null,progressivePromotion.value);
+                        }
+                        if (progressivePromotion.type.Equals(ProgressiveTypes.Percent))
+                        {
+                            var percentageDiscountOffer = new PercentageDiscountOffer(progressivePromotion.value,AppliedOn.TotalRate);
+                            return new Offer(string.IsNullOrWhiteSpace(progressivePromotion.name) ? progressivePromotion.name : null, null, percentageDiscountOffer);
+                        }
+                    }
+                    else if (payStayPromotion != null)
+                    {
+                        var payStayOffer = new PayStayOffer(payStayPromotion.stay, (payStayPromotion.stay - payStayPromotion.pay));
+                        return new Offer(null, null, payStayOffer);
+                    }
+                }
+            }
             return null;
         }
 
         private Discount ParseDiscount(RoomType roomType)
         {
-           
+           if(roomType.Discount==null)
+            return null;
+           if((roomType.Discount.from<=_criteria.CheckIn && roomType.Discount.to>=_criteria.CheckIn) &&
+                (roomType.Discount.from <= _criteria.CheckOut && roomType.Discount.to >= _criteria.CheckOut))
+            {
+                var progressivePromotion = roomType.Discount as ProgressivePromotion;
+                var payStaypromotion = roomType.Discount as PayStayPromotion;    
+                if (progressivePromotion != null)
+                {
+                    if (progressivePromotion.type.Equals(ProgressiveTypes.Amount))
+                    {
+                        var desc = progressivePromotion.name != null ?progressivePromotion.name: null;
+                        return new Discount(progressivePromotion.value,true,desc);
+                    }
+                }
+            }
             return null;
         }
 
         private BoardBasis ParseBoardBasis(Boardbase boardBase)
         {
-            return null;
+            return new BoardBasis(boardBase.bbId.ToString(), boardBase.bbName,BoardBasisType.RoomOnly, boardBase.bbPrice, true);
         }
 
         private decimal ParseSupplementPrice(List<Supplement> supplements)
         {
-            return 0;
+            return supplements.Where(supplement => supplement.suppChargeType == ChargeType.Addition)
+               .Aggregate(0m, (current, supplement) => current + supplement.price);
         }
 
         private List<string> ParseInclusions(List<Supplement> supplements)
         {
-            return (from supplement in supplements
-                    where supplement.suppChargeType != ChargeType.AtProperty
+            return (from supplement in supplements  where supplement.suppChargeType != ChargeType.AtProperty
                     select supplement.suppName).ToList();
         }
     }

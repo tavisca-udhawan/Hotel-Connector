@@ -28,14 +28,11 @@ namespace Tavisca.Connector.Hotels.Tourico.Search.Communicator
         {
             using (var profileScope = new ProfileContext("Tourico-ConnectorCall", false))
             {
-           //  var httpRequest = CreateHttpRequest(supplierRequest, supplierConfiguration);
-                 HttpResponse httpResponse = null;
                 try
                 {
                     var touricoClient = new TouricoClient(supplierConfiguration);
                       var hotelList =  touricoClient.GetHotels(supplierRequest);
                      return hotelList;
-                    //httpResponse = await httpRequest.SendAsync();
                 }
                 catch (BaseApplicationException bae)
                 {
